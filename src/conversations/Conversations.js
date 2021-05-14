@@ -4,6 +4,7 @@ import Messages from '../messages/Messages';
 const Conversations = ({ conversations, updateConversations }) => {
   const [newConversation, setNewConversation] = useState('');
   const [currentConversation, setCurrentConversation] = useState(null);
+  // const [messages, setMessages] = useState([]);
 
   const updateCurrentConversation = (conversation) => {
     setCurrentConversation(conversation);
@@ -21,7 +22,7 @@ const Conversations = ({ conversations, updateConversations }) => {
     const url = '/conversations';
     const method = 'POST';
     const headers = { 'Content-Type': 'application/json' };
-    const body = JSON.stringify({ title: newConversation });
+    const body = JSON.stringify({ title: newConversation, time: new Date() });
     const options = { method, headers, body };
     const response = await fetch(url, options);
     const data = await response.json();

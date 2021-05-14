@@ -1,13 +1,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Conversations', {
+    queryInterface.createTable('Thoughts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      text: {
         type: Sequelize.STRING,
       },
       time: {
@@ -21,6 +21,16 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      messageId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Messages',
+          key: 'id',
+          as: 'messageId',
+        },
+      },
     }),
-  down: (queryInterface) => queryInterface.dropTable('Conversations'),
+  down: (queryInterface) =>
+    queryInterface.dropTable('Thoughts'),
 };

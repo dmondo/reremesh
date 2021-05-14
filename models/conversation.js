@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Conversation = sequelize.define('Conversation', {
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    time: DataTypes.DATE,
   });
 
   Conversation.associate = (models) => {
