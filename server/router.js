@@ -6,8 +6,6 @@ const thoughts = require('./controllers').thoughts;
 const router = Router();
 
 router.get('/conversations-summary', conversations.summarize);
-
-router.get('/conversations', conversations.list);
 router.post('/conversations', conversations.create);
 
 router.get('/conversations/:conversationId/messages', conversations.list);

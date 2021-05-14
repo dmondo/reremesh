@@ -15,7 +15,6 @@ const Thoughts = ({ currentMessage, setViewingThoughts, updateCurrentMessage}) =
     const options = { method, headers, body };
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(`data: ${JSON.stringify(data)}`)
     updateCurrentMessage(data[0]);
   };
 

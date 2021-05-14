@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Re-remesh
+Re-remesh is the new kid on the block, and definitely not just a stripped-down knock-off of the Remesh that we all know and love.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Re-remesh is built using a React front-end (bootstrapped with create-react-app), a NodeJS/expressJS back-end, and a postgreSQL database. We communicate with this database using the Sequelize ORM. Testing is handled with Jest.
 
-## Available Scripts
+## To run the app locally
 
-In the project directory, you can run:
+Follow these steps:
 
-### `yarn start`
+Install dependencies
+### `npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Create a database. With postgreSQL installed you can simply run
+### `createdb your-db-name-here`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you don't have postgreSQL locally, consult the [documentation](https://www.postgresql.org/) or use a hosted postgreSQL database url in your config file in the next step.
 
-### `yarn test`
+Configure your database by creating a config.json file in the /config directory. Note that there is a config_example.json you can base your config off of. Just replace the database name, user, and password with your own values.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Migrate your database from the command line with the following command (the sequelize-cli is a dependency in the package.json so no additional install should be required for this step):
+### `sequelize db:migrate`
 
-### `yarn build`
+Launch client. The app front-end will then be available at localhost:3000
+### `npm start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Launch the server. The back-end will then be available at localhost:3001 by default
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run server:start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Now Re-remesh is ready to go!
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## To run the test suite
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run
+### `npm test`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Note that by default the testing server and development server run on the same port so you may need to spin down your express server (by e.g. pressing ctr-c in the terminal running your npm server:start command) in order to successfully run the test suite.
