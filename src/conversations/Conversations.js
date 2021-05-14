@@ -75,7 +75,7 @@ const Conversations = ({ conversations, updateConversations }) => {
       {currentConversation ? <Messages currentConversation={currentConversation} updateCurrentConversation={updateCurrentConversation} /> : (
         filteredConversations.map(conversation => (
           <div key={conversation.id}>
-            <div>{conversation.title}</div>
+            <div>{conversation.title} -- {conversation.time}</div>
             <button onClick={() => fetchConversation(conversation.id)}>View messages.</button>
           </div>
         )))

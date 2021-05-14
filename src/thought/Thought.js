@@ -1,7 +1,7 @@
 const Thought = ({ thought }) => {
   return (
     <>
-      {thought.text}
+      {thought.text} -- {thought.time}
     </>
   );
 };

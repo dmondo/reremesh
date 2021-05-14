@@ -21,7 +21,7 @@ const Message = ({ message }) => {
       <div>
         {viewingThoughts ? <Thoughts currentMessage={currentMessage} setViewingThoughts={setViewingThoughts} updateCurrentMessage={updateCurrentMessage} /> : (
           <div>
-            {message.text}
+            {message.text} -- {message.time}
             <button onClick={async () => {
               await fetchMessage(message.id);
               setViewingThoughts(true);
@@ -31,7 +31,6 @@ const Message = ({ message }) => {
           </div>
         )}
       </div>
-      {message.text}
     </>
   );
 };
