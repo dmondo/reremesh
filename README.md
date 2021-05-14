@@ -7,23 +7,23 @@ Re-remesh is built using a React front-end (bootstrapped with create-react-app),
 
 Follow these steps:
 
-Install dependencies
+1. Install dependencies
 ### `npm install`
 
-Create a database. With postgreSQL installed you can simply run
+2. Create a database. With postgreSQL installed you can simply run
 ### `createdb your-db-name-here`
 
 If you don't have postgreSQL locally, consult the [documentation](https://www.postgresql.org/) or use a hosted postgreSQL database url in your config file in the next step.
 
-Configure your database by creating a config.json file in the /config directory. Note that there is a config_example.json you can base your config off of. Just replace the database name, user, and password with your own values.
+3. Configure your database by creating a config.json file in the /config directory. Note that there is a config_example.json you can base your config off of. Just replace the database name, user, and password with your own values.
 
-Migrate your database from the command line with the following command (the sequelize-cli is a dependency in the package.json so no additional install should be required for this step):
+4. Migrate your database from the command line with the following command (the sequelize-cli is a dependency in the package.json so no additional install should be required for this step):
 ### `sequelize db:migrate`
 
-Launch client. The app front-end will then be available at localhost:3000
+5. Launch client. The app front-end will then be available at localhost:3000
 ### `npm start`
 
-Launch the server. The back-end will then be available at localhost:3001 by default
+6. Launch the server. The back-end will then be available at localhost:3001 by default
 
 ### `npm run server:start`
 
