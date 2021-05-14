@@ -1,7 +1,7 @@
-const Thought = () => {
+const Thought = ({ thought }) => {
   return (
     <>
-      this is a thought
+      {thought.text}
     </>
   );
 };

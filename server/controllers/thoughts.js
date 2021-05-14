@@ -1,4 +1,5 @@
 const Thought = require('../../models').Thought;
+const Message = require('../../models').Message;
 
 module.exports = {
   create(req, res) {
@@ -8,7 +9,21 @@ module.exports = {
         time: req.body.time,
         messageId: req.params.messageId
       })
-      .then(thought => res.status(201).send(thought))
+      .then(() => {
+        Message
+          .findAll({
+            where: {
+              id: req.params.messageId,
+            },
+            include: [
+              {
+                model: Thought,
+                as: 'thoughts',
+              },
+            ],
+          })
+          .then(message => res.status(201).send(message))
+      })
       .catch(error => res.status(400).send(error));
   },
 };

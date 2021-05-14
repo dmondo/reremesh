@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import DateTimePicker from 'react-datetime-picker';
 import Messages from '../messages/Messages';
 
 const Conversations = ({ conversations, updateConversations }) => {
   const [newConversation, setNewConversation] = useState('');
   const [currentConversation, setCurrentConversation] = useState(null);
-  // const [messages, setMessages] = useState([]);
+  const [conversationDateTime, setConversationDateTime] = useState(new Date());
 
   const updateCurrentConversation = (conversation) => {
     setCurrentConversation(conversation);
@@ -22,7 +23,7 @@ const Conversations = ({ conversations, updateConversations }) => {
     const url = '/conversations';
     const method = 'POST';
     const headers = { 'Content-Type': 'application/json' };
-    const body = JSON.stringify({ title: newConversation, time: new Date() });
+    const body = JSON.stringify({ title: newConversation, time: conversationDateTime });
     const options = { method, headers, body };
     const response = await fetch(url, options);
     const data = await response.json();
@@ -40,6 +41,10 @@ const Conversations = ({ conversations, updateConversations }) => {
           required
         >
         </input>
+        <DateTimePicker
+          onChange={setConversationDateTime}
+          value={conversationDateTime}
+        />
         <button type="submit">
           Create!
         </button>
