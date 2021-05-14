@@ -26,7 +26,7 @@ const Thoughts = ({ currentMessage, setViewingThoughts, updateCurrentMessage}) =
       </div>
       <div>
         {currentMessage.thoughts.map((thought) => (
-          <div>
+          <div key={thought.id}>
             <Thought thought={thought} />
           </div>
         ))}

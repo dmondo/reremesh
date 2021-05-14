@@ -5,8 +5,6 @@ import Conversations from './conversations/Conversations';
 const App = () => {
   const [conversationView, setConversationView] = useState(false);
   const [conversations, setConversations] = useState([]);
-  // const [messages, setMessages] = useState({});
-  // const [thoughts, setThoughts] = useState({});
 
   const fetchConversations = async () => {
     const response = await fetch('/conversations-summary');
@@ -14,25 +12,9 @@ const App = () => {
     setConversations(data);
   };
 
-  // const fetchMessages = async () => {
-
-  // };
-
   const updateConversations = (newConversation) => {
     setConversations(newConversation);
   };
-
-  // const updateMessages = (conversationId, newMessage) => {
-  //   let updatedConversation = [ ...conversations ];
-  //   updatedConversation = updatedConversation.map(converse => {
-  //     if (converse.id !== conversationId) {
-  //       return converse;
-  //     }
-  //     return {
-
-  //     };
-  //   });
-  // }
 
   useEffect(() => {
     fetchConversations();
@@ -44,11 +26,13 @@ const App = () => {
         <p>
           Welcome to Re-Remesh, the hot new competitor to Remesh.
         </p>
-        {conversationView ? <Conversations conversations={conversations} updateConversations={updateConversations} /> : (
-          <div onClick={() => setConversationView(!conversationView)}>
-            View conversations
-          </div>
-        )}
+        <div>
+          {conversationView ? <Conversations conversations={conversations} updateConversations={updateConversations} /> : (
+            <button onClick={() => setConversationView(true)}>
+              View conversations
+            </button>
+          )}
+        </div>
       </header>
     </div>
   );

@@ -5,6 +5,8 @@ import Message from '../message/Message';
 const Messages = ({ currentConversation, updateCurrentConversation }) => {
   const [newMessage, setNewMessage] = useState('');
   const [messageDateTime, setMessageDateTime] = useState(new Date());
+  const [filterValue, setFilterValue] = useState('');
+  const [filteredMessages, setFilteredMessages] = useState(currentConversation?.messages || '');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,13 +20,21 @@ const Messages = ({ currentConversation, updateCurrentConversation }) => {
     updateCurrentConversation(data[0]);
   };
 
+  const handleFilter = async (e) => {
+    e.preventDefault();
+    const filterMessage = filteredMessages.filter(msg => (
+      msg.text.includes(filterValue)
+    ));
+    setFilteredMessages(filterMessage);
+  }
+
   return (
     <>
       <div>Your current conversation: {currentConversation.title}</div>
       <div>
         <div>Messages:</div>
-        {currentConversation.messages.map(message => (
-          <div>
+        {filteredMessages.map(message => (
+          <div key={message.id}>
             <Message message={message} />
           </div>
         ))}
@@ -44,6 +54,19 @@ const Messages = ({ currentConversation, updateCurrentConversation }) => {
         />
         <button type="submit">
           Create!
+        </button>
+      </form>
+      <form onSubmit={handleFilter} style={{ marginBottom: '10px' }}>
+        Filter messages by content:
+        <input
+          type="text"
+          value={filterValue}
+          onChange={e => setFilterValue(e.target.value)}
+          required
+        >
+        </input>
+        <button type="submit">
+          Filter!
         </button>
       </form>
       <button onClick={() => updateCurrentConversation(false)}>
