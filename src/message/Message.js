@@ -1,7 +1,7 @@
-const Message = () => {
+const Message = ({ message }) => {
   return (
     <>
-      this is a message
+      {message.text }
     </>
   );
 };

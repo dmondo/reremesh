@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "your_name_here",
+    "password": "your_pass_here",
+    "database": "reremesh",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "your_name_here",
+    "password": "your_pass_here",
+    "database": "reremesh",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "your_name_here",
+    "password": "your_pass_here",
+    "database": "reremesh",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
